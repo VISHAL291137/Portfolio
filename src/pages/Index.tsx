@@ -6,28 +6,28 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
   const skills = [
-    "React", "TypeScript", "Node.js", "Python", "UI/UX Design",
-    "Tailwind CSS", "PostgreSQL", "Git", "REST APIs", "Agile"
+    "Print Design", "Surface Ornamentation", "Textile Design", "Conceptual Artwork", "Storytelling",
+    "Pattern Design", "Indian Architecture", "Intricate Detailing", "Adobe Illustrator", "Color Theory"
   ];
 
   const experiences = [
     {
-      title: "Senior Developer",
-      company: "Tech Solutions Inc.",
+      title: "Textile Designer",
+      company: "Freelance",
       period: "2022 - Present",
-      description: "Leading frontend development for enterprise applications, mentoring junior developers, and implementing modern web technologies."
+      description: "Creating intricate textile designs inspired by Indian architecture, specializing in print design, surface ornamentation, and conceptual artwork with detailed craftsmanship."
     },
     {
-      title: "Full Stack Developer",
-      company: "Digital Innovations",
+      title: "Design Consultant",
+      company: "Various Brands",
       period: "2020 - 2022",
-      description: "Built scalable web applications using React and Node.js, collaborated with cross-functional teams to deliver high-quality products."
+      description: "Collaborated with fashion and home décor brands to develop unique textile patterns and surface designs, bringing storytelling through intricate detailing."
     },
     {
-      title: "Junior Developer",
-      company: "StartUp Labs",
+      title: "Junior Textile Designer",
+      company: "Design Studio",
       period: "2018 - 2020",
-      description: "Developed responsive user interfaces, integrated APIs, and contributed to agile development processes."
+      description: "Assisted in creating textile patterns and prints, developed skills in traditional and contemporary design techniques inspired by Indian heritage."
     }
   ];
 
@@ -48,16 +48,19 @@ const Index = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              John Anderson
+              Yogyata Yogi
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-              Full Stack Developer & UI/UX Enthusiast
+              Textile Designer & Visual Storyteller
             </p>
             
-            <div className="flex items-center justify-center gap-2 text-muted-foreground mb-8">
-              <MapPin className="w-4 h-4" />
-              <span>San Francisco, CA</span>
+            <div className="flex flex-col items-center gap-2 text-muted-foreground mb-8">
+              <div className="flex items-center gap-2">
+                <Badge variant="secondary" className="bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20">Available</Badge>
+                <Badge variant="secondary" className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">Remote</Badge>
+              </div>
+              <p className="text-sm">Starting at ₹800/hr</p>
             </div>
             
             <div className="flex flex-wrap gap-4 justify-center">
@@ -87,13 +90,13 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
           <Card className="p-8 shadow-[var(--shadow-elegant)] border-primary/10">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              I'm a passionate full stack developer with over 6 years of experience building modern web applications. 
-              I specialize in creating elegant, user-friendly interfaces and robust backend systems that scale.
+              I'm a Textile Designer with a passion for intricate detailed work inspired by Indian architecture. 
+              My design philosophy celebrates the beauty of traditional craftsmanship merged with contemporary aesthetics.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, 
-              or exploring the latest web technologies. I believe in writing clean, maintainable code and creating 
-              exceptional user experiences.
+              Whether it's print design, surface ornamentation, conceptual artwork, or visual storytelling, I bring the same 
+              meticulous attention to detail found in beautifully carved Indian architecture. I'm available for collaborations 
+              and would love to bring your vision to life through textile design.
             </p>
           </Card>
         </div>
@@ -161,15 +164,15 @@ const Index = () => {
           <Card className="p-6 shadow-[var(--shadow-elegant)] border-l-4 border-l-accent/50">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
               <div>
-                <h3 className="text-xl font-semibold mb-1">Bachelor of Science in Computer Science</h3>
-                <p className="text-primary font-medium">University of California</p>
+                <h3 className="text-xl font-semibold mb-1">Bachelor of Design in Textile Design</h3>
+                <p className="text-primary font-medium">National Institute of Design</p>
               </div>
               <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
                 2014 - 2018
               </Badge>
             </div>
             <p className="text-muted-foreground">
-              Graduated with honors. Focused on software engineering, algorithms, and web technologies.
+              Specialized in traditional and contemporary textile design, surface ornamentation, and pattern making with focus on Indian heritage.
             </p>
           </Card>
         </div>
@@ -180,7 +183,7 @@ const Index = () => {
         <div className="container max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Let's Connect</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            I'm available for collaborations and commissions. Let's create something beautiful together that celebrates intricate design and storytelling.
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center">
@@ -189,21 +192,15 @@ const Index = () => {
               className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
               asChild
             >
-              <a href="mailto:john.anderson@example.com">
+              <a href="mailto:yogyata.design@example.com">
                 <Mail className="w-5 h-5 mr-2" />
                 Email Me
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/yogyata-yogi-378222253/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-5 h-5 mr-2" />
                 LinkedIn
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="w-5 h-5 mr-2" />
-                GitHub
               </a>
             </Button>
           </div>
@@ -213,7 +210,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-8 px-4 border-t">
         <div className="container max-w-4xl mx-auto text-center text-muted-foreground">
-          <p>© 2024 John Anderson. All rights reserved.</p>
+          <p>© 2024 Yogyata Yogi. All rights reserved.</p>
         </div>
       </footer>
     </div>

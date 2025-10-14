@@ -48,7 +48,7 @@ const Index = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Yogyata Yogi
+              Vishal Kumar
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto">
@@ -210,7 +210,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-8 px-4 border-t">
         <div className="container max-w-4xl mx-auto text-center text-muted-foreground">
-          <p>© 2024 Yogyata Yogi. All rights reserved.</p>
+          <p>© 2024 Vishal Kumar. All rights reserved.</p>
         </div>
       </footer>
     </div>

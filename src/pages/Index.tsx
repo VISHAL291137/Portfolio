@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Linkedin, Github, MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo-optimized.webp";
+import profilePhoto from "@/assets/profile-photo.webp";
 
 const Index = () => {
   const skills = [

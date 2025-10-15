@@ -6,31 +6,136 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
   const skills = [
-    "React.js", "Cybersecurity", "OWASP Top 10", "Docker", "Git",
-    "Python", "SHA256 Encryption", "Nmap", "GCP Certified", "Responsive Design",
-    "Security Protocols", "Frontend Development", "Cloud Computing", "Zero-Trust Architecture"
+    "Python", "React.js", "Cybersecurity", "OWASP Top 10", "Docker", "Git",
+    "SHA256 Encryption", "HTML5", "CSS", "JavaScript", "Responsive Design",
+    "Front-End Development", "Full-Stack Development", "Cloud Computing", 
+    "Data Analysis", "pandas", "Matplotlib", "CLI Development", "MySQL",
+    "PHP", "Java", "C++", "Bootstrap", "WordPress", "Django", "Linux",
+    "Security Analysis", "Ethical Hacking", "SEO", "Digital Marketing"
   ];
 
   const experiences = [
     {
       title: "Full-time Developer",
       company: "PaperMe",
-      period: "Nov 2024 - Present",
+      period: "Nov 2024 - Present · 1 yr",
+      location: "India",
       description: "Working on professional development projects, contributing to secure and scalable web applications with focus on modern frontend technologies and best practices."
     },
     {
       title: "Career Break - Professional Development",
       company: "Self-directed Learning",
-      period: "Jan 2023 - Present",
+      period: "Jan 2023 - Present · 2 yrs 10 mos",
       location: "Jaipur, Rajasthan",
-      description: "Took intentional time to upskill and specialize in cybersecurity protocols (OWASP, Nmap, SHA256), frontend mastery with React.js, secure deployment using Docker and Git, and Cloud Computing (GCP Certified). Developed and published 5+ real-world projects on GitHub, building a strong technical foundation for a career in secure software development."
+      description: "Took intentional time to upskill and specialize in cybersecurity protocols (OWASP, Nmap, SHA256), frontend mastery with React.js and responsive design, secure deployment using Docker and Git, and Cloud Computing (GCP Certified). Developed and published 5+ real-world projects on GitHub, building a strong technical foundation for a career in secure software development."
     },
     {
       title: "Developer + Security Integrator",
-      company: "Independent Project",
-      period: "Jan 2024 - Mar 2024",
-      location: "Jaipur, Rajasthan · Remote",
-      description: "Built a custom password vault using Python with SHA256 encryption for storage. Deployed using Docker containers in an offline-first, zero-trust environment. Applied OWASP Top 10 compliance across the entire system to address high-level security threats."
+      company: "Independent Project · Self-employed",
+      period: "Jan 2024 - Mar 2024 · 3 mos",
+      location: "Jaipur, Rajasthan, India · Remote",
+      description: "Problem: Users store passwords in plaintext. Built a custom password vault using Python with SHA256 encryption for storage. Deployed using Docker containers in an offline-first, zero-trust environment. Applied OWASP Top 10 compliance across the entire system. Outcome: Created a lightweight, encrypted password manager rated 4.8/5 by GitHub community on usability and security."
+    },
+    {
+      title: "NAAC College Accreditation Website",
+      company: "University Project · Trainee",
+      period: "Sep 2023 - Nov 2023 · 3 mos",
+      location: "Jaipur, Rajasthan, India · On-site",
+      description: "Problem: College lacked a digital face for accreditation. Built from the ground up using HTML, CSS, JavaScript. Made it mobile-responsive and accessible with optimized load time for sub-1s on 4G. Created interface aligned with NAAC submission goals. Result: Used as the official accreditation portal, traffic tested for 500+ concurrent users."
+    },
+    {
+      title: "Sales Data Analyzer",
+      company: "Personal Build · Self-employed",
+      period: "Aug 2023 - Oct 2023 · 3 mos",
+      location: "Jaipur, Rajasthan, India · Remote",
+      description: "Objective: Decode hidden profit zones from sales logs. Engineered with Python (pandas, matplotlib). Loaded product-wise sales data, applied filters and analysis by category & ROI, rendered charts with interactive insights. Outcome: Business simulation tested with 4 datasets, generated insights like best-seller heatmaps and seasonal trends."
+    },
+    {
+      title: "Terminal Chatbot (CLI Bot)",
+      company: "Independent Project · Self-employed",
+      period: "Jul 2023 - Aug 2023 · 2 mos",
+      location: "Jaipur, Rajasthan, India · Remote",
+      description: "Mission: Simulate intelligent CLI chat for terminal users. Built using Python core with structured I/O and pattern recognition. Added mock personality for realism and extended for custom shell command emulation. Outcome: Used for internal shell practice and Git tutorials. Downloaded 1.2k+ times on GitHub."
+    }
+  ];
+
+  const projects = [
+    {
+      title: "Python API Integration",
+      description: "Developed a Python-based system to integrate third-party APIs for real-time data retrieval and processing. Focused on secure request handling, error logging, and output formatting. Demonstrated RESTful architecture and authentication handling.",
+      link: "https://github.com/VISHAL291137/python-api-integration"
+    },
+    {
+      title: "TIME-LIGHT",
+      description: "Developed a light-based time tracker using Python. Displays real-time status updates with a visual LED-like interface. Ideal for productivity tracking and automation tools. Focused on modular code design, time-based logic, and user interaction.",
+      link: "https://vishal291137.github.io/TIME-LIGHT/"
+    }
+  ];
+
+  const education = [
+    {
+      institution: "Suresh Gyan Vihar University",
+      degree: "BCA, Information Technology",
+      period: "Sep 2022",
+      grade: "7.8 CGPA",
+      description: "Focused on combining strong programming skills with cybersecurity fundamentals. Worked on multiple real-world projects including a Docker-based password manager, data analytics tools, and secure front-end web apps. Maintained a 7.8 CGPA and pursued certifications in cloud computing, digital marketing, and ethical security practices."
+    },
+    {
+      institution: "R.K.B. INTERCOLLEGE, GITANAGAR, NAWADAH, BIHAR",
+      degree: "Secondary School Certificate (SSCE), Science",
+      period: "2020 - 2022",
+      description: "Completed senior secondary education with a focus on computer science and mathematics. Developed early interest in programming, problem-solving, and internet security. Participated in state-level computer science competitions and coding challenges."
+    }
+  ];
+
+  const certifications = [
+    {
+      title: "Tata Group - Cybersecurity Analyst Job Simulation",
+      issuer: "Forage",
+      date: "Feb 2024",
+      credential: "WiCxsWjpBmuf9q9JH"
+    },
+    {
+      title: "Introduction to Programming Using HTML and CSS",
+      issuer: "LearnTube.ai",
+      date: "Jul 2023",
+      credential: "HTM3502023596105S"
+    },
+    {
+      title: "Introduction to Programming Using Python",
+      issuer: "LearnTube.ai",
+      date: "May 2023",
+      credential: "PYT2932023596105S"
+    },
+    {
+      title: "Programming in HTML5 with JavaScript and CSS3",
+      issuer: "EDUCBA",
+      date: "May 2023",
+      credential: "BZR4HNQ-V"
+    },
+    {
+      title: "Digital Garage Certificate",
+      issuer: "Google",
+      date: "Nov 2022",
+      credential: "9UB BVH 6W8"
+    },
+    {
+      title: "Email Marketing",
+      issuer: "HubSpot Academy",
+      date: "Mar 2023",
+      credential: "51d4362be68645e1babcc5389264d34c"
+    },
+    {
+      title: "Social Media Marketing",
+      issuer: "HubSpot Academy",
+      date: "Mar 2023",
+      credential: "fd7c920dbd83493f991432ace0d90dbb"
+    },
+    {
+      title: "Google Ads Display Certification",
+      issuer: "Google",
+      date: "Apr 2023",
+      credential: "147473892"
     }
   ];
 
@@ -98,8 +203,9 @@ const Index = () => {
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               From implementing OWASP Top 10 compliance to deploying containerized applications with Docker, I bring a security-first 
-              mindset to every project. With hands-on experience in React.js, Python, cloud computing, and encryption protocols, 
-              I'm passionate about creating applications that are both user-friendly and secure.
+              mindset to every project. With hands-on experience in React.js, Python, cloud computing, data analysis, and encryption protocols, 
+              I'm passionate about creating applications that are both user-friendly and secure. I hold multiple certifications in 
+              cybersecurity, digital marketing, and full-stack development, maintaining a 7.8 CGPA during my BCA.
             </p>
           </Card>
         </div>
@@ -144,6 +250,7 @@ const Index = () => {
                   <div>
                     <h3 className="text-xl font-semibold mb-1">{exp.title}</h3>
                     <p className="text-primary font-medium">{exp.company}</p>
+                    {exp.location && <p className="text-sm text-muted-foreground mt-1">{exp.location}</p>}
                   </div>
                   <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
                     {exp.period}
@@ -156,28 +263,94 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Education Section */}
+      {/* Projects Section */}
       <section className="py-20 px-4">
         <div className="container max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-3 mb-8">
+          <div className="flex items-center justify-center gap-3 mb-12">
+            <Code2 className="w-8 h-8 text-primary" />
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Projects</h2>
+          </div>
+          
+          <div className="space-y-6">
+            {projects.map((project, index) => (
+              <Card 
+                key={index} 
+                className="p-6 hover:shadow-[var(--shadow-elegant)] transition-shadow border-l-4 border-l-accent/50"
+              >
+                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">{project.description}</p>
+                <Button variant="outline" size="sm" asChild>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <Github className="w-4 h-4 mr-2" />
+                    View Project
+                  </a>
+                </Button>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="container max-w-4xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-12">
             <GraduationCap className="w-8 h-8 text-primary" />
             <h2 className="text-3xl md:text-4xl font-bold text-center">Education</h2>
           </div>
           
-          <Card className="p-6 shadow-[var(--shadow-elegant)] border-l-4 border-l-accent/50">
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
-              <div>
-                <h3 className="text-xl font-semibold mb-1">Google Cloud Platform Certification</h3>
-                <p className="text-primary font-medium">Google Cloud</p>
-              </div>
-              <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
-                2023
-              </Badge>
-            </div>
-            <p className="text-muted-foreground">
-              Certified in cloud computing fundamentals, infrastructure management, and deployment strategies on Google Cloud Platform.
-            </p>
-          </Card>
+          <div className="space-y-6">
+            {education.map((edu, index) => (
+              <Card 
+                key={index} 
+                className="p-6 shadow-[var(--shadow-elegant)] border-l-4 border-l-accent/50"
+              >
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">{edu.degree}</h3>
+                    <p className="text-primary font-medium">{edu.institution}</p>
+                    {edu.grade && <p className="text-sm text-muted-foreground mt-1">Grade: {edu.grade}</p>}
+                  </div>
+                  <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
+                    {edu.period}
+                  </Badge>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">{edu.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section className="py-20 px-4">
+        <div className="container max-w-4xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-12">
+            <Badge className="w-8 h-8 p-1.5" variant="secondary">
+              <Code2 className="w-full h-full" />
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-center">Licenses & Certifications</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-4">
+            {certifications.map((cert, index) => (
+              <Card 
+                key={index} 
+                className="p-5 hover:shadow-[var(--shadow-elegant)] transition-shadow"
+              >
+                <h3 className="text-lg font-semibold mb-2">{cert.title}</h3>
+                <p className="text-primary font-medium text-sm mb-2">{cert.issuer}</p>
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>{cert.date}</span>
+                  {cert.credential && (
+                    <span className="text-xs bg-muted px-2 py-1 rounded">
+                      ID: {cert.credential}
+                    </span>
+                  )}
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 

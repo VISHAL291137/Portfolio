@@ -6,28 +6,31 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
   const skills = [
-    "Print Design", "Surface Ornamentation", "Textile Design", "Conceptual Artwork", "Storytelling",
-    "Pattern Design", "Indian Architecture", "Intricate Detailing", "Adobe Illustrator", "Color Theory"
+    "React.js", "Cybersecurity", "OWASP Top 10", "Docker", "Git",
+    "Python", "SHA256 Encryption", "Nmap", "GCP Certified", "Responsive Design",
+    "Security Protocols", "Frontend Development", "Cloud Computing", "Zero-Trust Architecture"
   ];
 
   const experiences = [
     {
-      title: "Textile Designer",
-      company: "Freelance",
-      period: "2022 - Present",
-      description: "Creating intricate textile designs inspired by Indian architecture, specializing in print design, surface ornamentation, and conceptual artwork with detailed craftsmanship."
+      title: "Full-time Developer",
+      company: "PaperMe",
+      period: "Nov 2024 - Present",
+      description: "Working on professional development projects, contributing to secure and scalable web applications with focus on modern frontend technologies and best practices."
     },
     {
-      title: "Design Consultant",
-      company: "Various Brands",
-      period: "2020 - 2022",
-      description: "Collaborated with fashion and home décor brands to develop unique textile patterns and surface designs, bringing storytelling through intricate detailing."
+      title: "Career Break - Professional Development",
+      company: "Self-directed Learning",
+      period: "Jan 2023 - Present",
+      location: "Jaipur, Rajasthan",
+      description: "Took intentional time to upskill and specialize in cybersecurity protocols (OWASP, Nmap, SHA256), frontend mastery with React.js, secure deployment using Docker and Git, and Cloud Computing (GCP Certified). Developed and published 5+ real-world projects on GitHub, building a strong technical foundation for a career in secure software development."
     },
     {
-      title: "Junior Textile Designer",
-      company: "Design Studio",
-      period: "2018 - 2020",
-      description: "Assisted in creating textile patterns and prints, developed skills in traditional and contemporary design techniques inspired by Indian heritage."
+      title: "Developer + Security Integrator",
+      company: "Independent Project",
+      period: "Jan 2024 - Mar 2024",
+      location: "Jaipur, Rajasthan · Remote",
+      description: "Built a custom password vault using Python with SHA256 encryption for storage. Deployed using Docker containers in an offline-first, zero-trust environment. Applied OWASP Top 10 compliance across the entire system to address high-level security threats."
     }
   ];
 
@@ -52,7 +55,7 @@ const Index = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto">
-              Textile Designer & Visual Storyteller
+              Software Developer & Security Engineer
             </p>
             
             <div className="flex flex-col items-center gap-2 text-muted-foreground mb-8">
@@ -60,7 +63,7 @@ const Index = () => {
                 <Badge variant="secondary" className="bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20">Available</Badge>
                 <Badge variant="secondary" className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">Remote</Badge>
               </div>
-              <p className="text-sm">Starting at ₹800/hr</p>
+              <p className="text-sm">Open to opportunities</p>
             </div>
             
             <div className="flex flex-wrap gap-4 justify-center">
@@ -90,13 +93,13 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
           <Card className="p-8 shadow-[var(--shadow-elegant)] border-primary/10">
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              I'm a Textile Designer with a passion for intricate detailed work inspired by Indian architecture. 
-              My design philosophy celebrates the beauty of traditional craftsmanship merged with contemporary aesthetics.
+              I'm a Software Developer with a strong focus on cybersecurity and secure application development. 
+              My approach combines modern frontend technologies with rigorous security practices to build reliable, scalable solutions.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Whether it's print design, surface ornamentation, conceptual artwork, or visual storytelling, I bring the same 
-              meticulous attention to detail found in beautifully carved Indian architecture. I'm available for collaborations 
-              and would love to bring your vision to life through textile design.
+              From implementing OWASP Top 10 compliance to deploying containerized applications with Docker, I bring a security-first 
+              mindset to every project. With hands-on experience in React.js, Python, cloud computing, and encryption protocols, 
+              I'm passionate about creating applications that are both user-friendly and secure.
             </p>
           </Card>
         </div>
@@ -164,15 +167,15 @@ const Index = () => {
           <Card className="p-6 shadow-[var(--shadow-elegant)] border-l-4 border-l-accent/50">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-3">
               <div>
-                <h3 className="text-xl font-semibold mb-1">Bachelor of Design in Textile Design</h3>
-                <p className="text-primary font-medium">National Institute of Design</p>
+                <h3 className="text-xl font-semibold mb-1">Google Cloud Platform Certification</h3>
+                <p className="text-primary font-medium">Google Cloud</p>
               </div>
               <Badge variant="outline" className="mt-2 md:mt-0 w-fit">
-                2014 - 2018
+                2023
               </Badge>
             </div>
             <p className="text-muted-foreground">
-              Specialized in traditional and contemporary textile design, surface ornamentation, and pattern making with focus on Indian heritage.
+              Certified in cloud computing fundamentals, infrastructure management, and deployment strategies on Google Cloud Platform.
             </p>
           </Card>
         </div>
@@ -183,7 +186,7 @@ const Index = () => {
         <div className="container max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Let's Connect</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I'm available for collaborations and commissions. Let's create something beautiful together that celebrates intricate design and storytelling.
+            I'm open to new opportunities in software development and cybersecurity. Let's build something secure and impactful together.
           </p>
           
           <div className="flex flex-wrap gap-4 justify-center">
@@ -192,7 +195,7 @@ const Index = () => {
               className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
               asChild
             >
-              <a href="mailto:yogyata.design@example.com">
+              <a href="mailto:vishal.dev@example.com">
                 <Mail className="w-5 h-5 mr-2" />
                 Email Me
               </a>

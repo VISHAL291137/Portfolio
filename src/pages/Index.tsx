@@ -16,7 +16,7 @@ const Index = () => {
 
   const experiences = [
     {
-      title: "Full-time Developer",
+      title: "Admin Executive",
       company: "PaperMe",
       period: "Nov 2024 - Present · 1 yr",
       location: "India",

@@ -1,10 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Mail, Linkedin, Github, MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
+import { useState } from "react";
 import profilePhoto from "@/assets/profile-photo.webp";
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    description: ""
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const mailtoLink = `mailto:vishal.dev@example.com?subject=Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.description)}`;
+    window.location.href = mailtoLink;
+  };
+
   const skills = [
     "Python", "React.js", "Cybersecurity", "OWASP Top 10", "Docker", "Git",
     "SHA256 Encryption", "HTML5", "CSS", "JavaScript", "Responsive Design",
@@ -356,27 +371,66 @@ const Index = () => {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-muted/30">
-        <div className="container max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Let's Connect</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I'm open to new opportunities in software development and cybersecurity. Let's build something secure and impactful together.
-          </p>
+        <div className="container max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Mail className="w-8 h-8 text-primary" />
+              <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              I'm open to new opportunities in software development and cybersecurity. Let's build something secure and impactful together.
+            </p>
+          </div>
           
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
-              asChild
-            >
-              <a href="mailto:vishal.dev@example.com">
+          <Card className="p-8 shadow-[var(--shadow-elegant)] border-primary/10 max-w-2xl mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="name" className="text-base">Name</Label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="h-12"
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="description" className="text-base">Description</Label>
+                <Textarea
+                  id="description"
+                  placeholder="Tell me about your project or inquiry"
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  required
+                  className="min-h-[150px] resize-none"
+                />
+              </div>
+              
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-[var(--shadow-glow)]"
+              >
                 <Mail className="w-5 h-5 mr-2" />
-                Email Me
-              </a>
-            </Button>
+                Send Message
+              </Button>
+            </form>
+          </Card>
+
+          <div className="flex flex-wrap gap-4 justify-center mt-8">
             <Button size="lg" variant="outline" asChild>
               <a href="https://www.linkedin.com/in/yogyata-yogi-378222253/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-5 h-5 mr-2" />
                 LinkedIn
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href="https://github.com/VISHAL291137" target="_blank" rel="noopener noreferrer">
+                <Github className="w-5 h-5 mr-2" />
+                GitHub
               </a>
             </Button>
           </div>

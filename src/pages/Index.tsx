@@ -370,64 +370,82 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-muted/30">
+      <section id="contact" className="py-20 px-4 bg-gradient-to-b from-background to-muted/30">
         <div className="container max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Mail className="w-8 h-8 text-primary" />
-              <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
+          <div className="text-center mb-12 animate-fade-in">
+            <div className="inline-flex items-center justify-center gap-3 mb-4 p-4 rounded-full bg-primary/10 backdrop-blur-sm">
+              <Mail className="w-8 h-8 text-primary animate-pulse" />
             </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               I'm open to new opportunities in software development and cybersecurity. Let's build something secure and impactful together.
             </p>
           </div>
           
-          <Card className="p-8 shadow-[var(--shadow-elegant)] border-primary/10 max-w-2xl mx-auto">
+          <Card className="p-8 md:p-10 shadow-[var(--shadow-elegant)] border-primary/20 max-w-2xl mx-auto backdrop-blur-sm bg-card/95 hover:shadow-[var(--shadow-glow)] transition-all duration-300 animate-scale-in">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-base">Name</Label>
+              <div className="space-y-3 group">
+                <Label htmlFor="name" className="text-base font-semibold flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-primary group-focus-within:animate-pulse"></span>
+                  Your Name
+                </Label>
                 <Input
                   id="name"
                   type="text"
-                  placeholder="Enter your name"
+                  placeholder="Enter your full name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
-                  className="h-12"
+                  className="h-14 text-base transition-all duration-300 focus:scale-[1.01] focus:shadow-lg border-2"
                 />
               </div>
               
-              <div className="space-y-2">
-                <Label htmlFor="description" className="text-base">Description</Label>
+              <div className="space-y-3 group">
+                <Label htmlFor="description" className="text-base font-semibold flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-primary group-focus-within:animate-pulse"></span>
+                  Message
+                </Label>
                 <Textarea
                   id="description"
-                  placeholder="Tell me about your project or inquiry"
+                  placeholder="Tell me about your project, opportunity, or inquiry..."
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   required
-                  className="min-h-[150px] resize-none"
+                  className="min-h-[180px] text-base resize-none transition-all duration-300 focus:scale-[1.01] focus:shadow-lg border-2"
                 />
               </div>
               
               <Button 
                 type="submit" 
                 size="lg" 
-                className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity shadow-[var(--shadow-glow)]"
+                className="w-full h-14 text-base font-semibold bg-gradient-to-r from-primary via-primary to-accent hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-[var(--shadow-glow)] group"
               >
-                <Mail className="w-5 h-5 mr-2" />
-                Send Message
+                <Mail className="w-6 h-6 mr-2 group-hover:rotate-12 transition-transform" />
+                Send Message Now
               </Button>
             </form>
           </Card>
 
-          <div className="flex flex-wrap gap-4 justify-center mt-8">
-            <Button size="lg" variant="outline" asChild>
+          <div className="flex flex-wrap gap-4 justify-center mt-10 animate-fade-in">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="hover:scale-105 hover:border-primary hover:text-primary transition-all duration-200 shadow-md hover:shadow-lg"
+              asChild
+            >
               <a href="https://www.linkedin.com/in/yogyata-yogi-378222253/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-5 h-5 mr-2" />
                 LinkedIn
               </a>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="hover:scale-105 hover:border-primary hover:text-primary transition-all duration-200 shadow-md hover:shadow-lg"
+              asChild
+            >
               <a href="https://github.com/VISHAL291137" target="_blank" rel="noopener noreferrer">
                 <Github className="w-5 h-5 mr-2" />
                 GitHub

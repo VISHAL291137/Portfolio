@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Linkedin, Github, MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
 import { useState } from "react";
-import profilePhoto from "@/assets/profile-photo.webp";
+import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
   const [formData, setFormData] = useState({

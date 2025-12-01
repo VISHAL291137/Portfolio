@@ -4,11 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Linkedin, Github, MapPin, Briefcase, GraduationCap, Code2 } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Briefcase, GraduationCap, Code2, BookOpen } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     description: ""
@@ -194,6 +196,14 @@ const Index = () => {
               >
                 <Mail className="w-4 h-4 mr-2" />
                 Get In Touch
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => navigate('/posts')}
+              >
+                <BookOpen className="w-4 h-4 mr-2" />
+                View Blog
               </Button>
               <Button 
                 size="lg" 

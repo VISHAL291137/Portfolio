@@ -1,14 +1,16 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import Auth from "./pages/Auth";
-import Posts from "./pages/Posts";
-import CreatePost from "./pages/CreatePost";
-import EditPost from "./pages/EditPost";
 import NotFound from "./pages/NotFound";
+
+const Auth = lazy(() => import("./pages/Auth"));
+const Posts = lazy(() => import("./pages/Posts"));
+const CreatePost = lazy(() => import("./pages/CreatePost"));
+const EditPost = lazy(() => import("./pages/EditPost"));
 
 const queryClient = new QueryClient();
 
@@ -20,10 +22,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/edit-post/:id" element={<EditPost />} />
+          <Route path="/auth" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><Auth /></Suspense>} />
+          <Route path="/posts" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><Posts /></Suspense>} />
+          <Route path="/create-post" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><CreatePost /></Suspense>} />
+          <Route path="/edit-post/:id" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><EditPost /></Suspense>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

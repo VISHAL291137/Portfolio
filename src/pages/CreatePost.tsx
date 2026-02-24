@@ -31,9 +31,24 @@ const CreatePost = () => {
     }
   };
 
+  const isValidImageUrl = (url: string): boolean => {
+    if (!url) return true;
+    try {
+      const parsed = new URL(url);
+      return ['http:', 'https:'].includes(parsed.protocol);
+    } catch {
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) return;
+
+    if (imageUrl && !isValidImageUrl(imageUrl)) {
+      toast({ title: "Invalid URL", description: "Image URL must use HTTP or HTTPS protocol", variant: "destructive" });
+      return;
+    }
 
     setLoading(true);
     try {

@@ -1,1 +1,4 @@
 project_id = "lrkebrxuaqgzhmrcetra"
+
+[functions.summarize-post]
+verify_jwt = false

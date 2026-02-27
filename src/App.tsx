@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 
 const Auth = lazy(() => import("./pages/Auth"));
 const Posts = lazy(() => import("./pages/Posts"));
+const PostDetail = lazy(() => import("./pages/PostDetail"));
 const CreatePost = lazy(() => import("./pages/CreatePost"));
 const EditPost = lazy(() => import("./pages/EditPost"));
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><Auth /></Suspense>} />
           <Route path="/posts" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><Posts /></Suspense>} />
+          <Route path="/posts/:id" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><PostDetail /></Suspense>} />
           <Route path="/create-post" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><CreatePost /></Suspense>} />
           <Route path="/edit-post/:id" element={<Suspense fallback={<div className="min-h-screen flex items-center justify-center"><p className="animate-pulse text-muted-foreground">Loading...</p></div>}><EditPost /></Suspense>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

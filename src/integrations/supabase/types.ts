@@ -14,12 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      post_chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          is_deleted: boolean
+          post_id: string
+          user_email: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          is_deleted?: boolean
+          post_id: string
+          user_email: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          is_deleted?: boolean
+          post_id?: string
+          user_email?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_chat_messages_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       posts: {
         Row: {
           content: string
           created_at: string
           id: string
           image_url: string | null
+          status: Database["public"]["Enums"]["post_status"]
           title: string
           updated_at: string
           user_id: string
@@ -29,6 +68,7 @@ export type Database = {
           created_at?: string
           id?: string
           image_url?: string | null
+          status?: Database["public"]["Enums"]["post_status"]
           title: string
           updated_at?: string
           user_id: string
@@ -38,6 +78,7 @@ export type Database = {
           created_at?: string
           id?: string
           image_url?: string | null
+          status?: Database["public"]["Enums"]["post_status"]
           title?: string
           updated_at?: string
           user_id?: string
@@ -77,6 +118,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
+      post_status: "open" | "in_progress" | "completed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -205,6 +247,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
+      post_status: ["open", "in_progress", "completed"],
     },
   },
 } as const

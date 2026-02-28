@@ -40,16 +40,16 @@ const Posts = () => {
 
   const init = async () => {
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) { navigate("/auth"); return; }
-    setUser(session.user);
-
-    const { data: roleData } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", session.user.id)
-      .eq("role", "admin")
-      .maybeSingle();
-    setIsAdmin(!!roleData);
+    if (session) {
+      setUser(session.user);
+      const { data: roleData } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", session.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      setIsAdmin(!!roleData);
+    }
     fetchPosts();
   };
 
@@ -82,7 +82,7 @@ const Posts = () => {
     }
   };
 
-  const canManagePost = (post: Post) => isAdmin || post.user_id === user?.id;
+  const canManagePost = (post: Post) => !!user && (isAdmin || post.user_id === user.id);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -99,21 +99,29 @@ const Posts = () => {
               Back
             </Button>
             <h1 className="text-3xl font-bold tracking-tight">Blog Dashboard</h1>
-            {isAdmin && (
+            {user && isAdmin && (
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
                 Admin
               </span>
             )}
           </div>
           <div className="flex gap-2">
-            <Button onClick={() => navigate("/create-post")} className="gap-2 rounded-xl">
-              <PlusCircle className="w-4 h-4" />
-              New Post
-            </Button>
-            <Button variant="outline" onClick={handleSignOut} className="gap-2 rounded-xl">
-              <LogOut className="w-4 h-4" />
-              Sign Out
-            </Button>
+            {user ? (
+              <>
+                <Button onClick={() => navigate("/create-post")} className="gap-2 rounded-xl">
+                  <PlusCircle className="w-4 h-4" />
+                  New Post
+                </Button>
+                <Button variant="outline" onClick={handleSignOut} className="gap-2 rounded-xl">
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <Button onClick={() => navigate("/auth")} className="gap-2 rounded-xl">
+                Login to interact
+              </Button>
+            )}
           </div>
         </div>
 

@@ -18,8 +18,8 @@ interface Message {
 
 interface PostChatProps {
   postId: string;
-  userId: string;
-  userEmail: string;
+  userId: string | null;
+  userEmail: string | null;
   isAdmin: boolean;
 }
 
@@ -113,26 +113,34 @@ const PostChat = ({ postId, userId, userEmail, isAdmin }: PostChatProps) => {
             content={m.content}
             createdAt={m.created_at}
             isDeleted={m.is_deleted}
-            isOwn={m.user_id === userId}
-            canModerate={isAdmin}
+            isOwn={!!userId && m.user_id === userId}
+            canModerate={!!userId && isAdmin}
             onDelete={handleDelete}
           />
         ))}
         <div ref={bottomRef} />
       </div>
-      <div className="border-t pt-3 flex gap-2">
-        <Input
-          placeholder="Type a message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
-          disabled={sending}
-          className="rounded-xl"
-        />
-        <Button onClick={handleSend} disabled={sending || !input.trim()} size="icon" className="rounded-xl shrink-0">
-          <Send className="w-4 h-4" />
-        </Button>
-      </div>
+      {userId ? (
+        <div className="border-t pt-3 flex gap-2">
+          <Input
+            placeholder="Type a message..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
+            disabled={sending}
+            className="rounded-xl"
+          />
+          <Button onClick={handleSend} disabled={sending || !input.trim()} size="icon" className="rounded-xl shrink-0">
+            <Send className="w-4 h-4" />
+          </Button>
+        </div>
+      ) : (
+        <div className="border-t pt-3 text-center">
+          <p className="text-sm text-muted-foreground">
+            <a href="/auth" className="text-primary hover:underline font-medium">Log in</a> to join the conversation
+          </p>
+        </div>
+      )}
     </div>
   );
 };

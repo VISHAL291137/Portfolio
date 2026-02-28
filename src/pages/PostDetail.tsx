@@ -38,16 +38,16 @@ const PostDetail = () => {
 
   const init = async () => {
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) { navigate("/auth"); return; }
-    setUser(session.user);
-
-    const { data: roleData } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", session.user.id)
-      .eq("role", "admin")
-      .maybeSingle();
-    setIsAdmin(!!roleData);
+    if (session) {
+      setUser(session.user);
+      const { data: roleData } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", session.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      setIsAdmin(!!roleData);
+    }
 
     const { data, error } = await supabase
       .from("posts")
@@ -145,8 +145,8 @@ const PostDetail = () => {
           <TabsContent value="chat">
             <PostChat
               postId={post.id}
-              userId={user.id}
-              userEmail={user.email}
+              userId={user?.id ?? null}
+              userEmail={user?.email ?? null}
               isAdmin={isAdmin}
             />
           </TabsContent>

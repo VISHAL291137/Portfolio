@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -6,12 +7,60 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+const MAX_CONTENT_LENGTH = 50000;
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
+    // Authentication check
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader?.startsWith("Bearer ")) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const supabaseClient = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_ANON_KEY") ?? "",
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
+    const token = authHeader.replace("Bearer ", "");
+    const { data: claimsData, error: authError } = await supabaseClient.auth.getClaims(token);
+    if (authError || !claimsData?.claims) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Input validation
     const { content } = await req.json();
-    if (!content) throw new Error("Missing content");
+
+    if (!content || typeof content !== "string") {
+      return new Response(JSON.stringify({ error: "Content must be a non-empty string" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const sanitizedContent = content.trim();
+    if (sanitizedContent.length === 0) {
+      return new Response(JSON.stringify({ error: "Content cannot be empty" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (sanitizedContent.length > MAX_CONTENT_LENGTH) {
+      return new Response(
+        JSON.stringify({ error: `Content too long. Maximum ${MAX_CONTENT_LENGTH} characters allowed.` }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY not configured");
@@ -30,7 +79,7 @@ serve(async (req) => {
             content:
               "You are a helpful assistant. Summarize the following blog post in a clear, concise, and easy-to-understand way. Use simple language. Break it into key points if appropriate. Keep it under 300 words.",
           },
-          { role: "user", content },
+          { role: "user", content: sanitizedContent },
         ],
       }),
     });

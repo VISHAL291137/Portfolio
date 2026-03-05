@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock } from "lucide-react";
 
 const Auth = () => {
+  const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,22 +29,26 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) throw error;
-      toast({
-        title: "Welcome back!",
-        description: "You've successfully logged in.",
-      });
-      navigate("/");
+      if (isLogin) {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        toast({ title: "Welcome back!", description: "You've successfully logged in." });
+        navigate("/");
+      } else {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { emailRedirectTo: `${window.location.origin}/` },
+        });
+        if (error) throw error;
+        toast({
+          title: "Account created!",
+          description: "Please check your email to verify your account before signing in.",
+        });
+        setIsLogin(true);
+      }
     } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
+      toast({ title: "Error", description: error.message, variant: "destructive" });
     } finally {
       setLoading(false);
     }
@@ -54,59 +59,50 @@ const Auth = () => {
       <Card className="w-full max-w-md border-border/50 shadow-2xl">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Welcome Back
+            {isLogin ? "Welcome Back" : "Create Account"}
           </CardTitle>
           <CardDescription>
-            Sign in to manage your posts
+            {isLogin ? "Sign in to interact with posts" : "Sign up to join the conversation"}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleAuth} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                Email
+                <Mail className="w-4 h-4" /> Email
               </Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="transition-all focus:scale-[1.02]"
+                id="email" type="email" placeholder="your@email.com"
+                value={email} onChange={(e) => setEmail(e.target.value)}
+                required className="transition-all focus:scale-[1.02]"
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="password" className="flex items-center gap-2">
-                <Lock className="w-4 h-4" />
-                Password
+                <Lock className="w-4 h-4" /> Password
               </Label>
               <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                minLength={6}
-                className="transition-all focus:scale-[1.02]"
+                id="password" type="password" placeholder="••••••••"
+                value={password} onChange={(e) => setPassword(e.target.value)}
+                required minLength={6} className="transition-all focus:scale-[1.02]"
               />
             </div>
-            <Button
-              type="submit"
-              className="w-full group relative overflow-hidden"
-              disabled={loading}
-            >
+            <Button type="submit" className="w-full group relative overflow-hidden" disabled={loading}>
               <span className="relative z-10">
-                {loading ? "Loading..." : "Sign In"}
+                {loading ? "Loading..." : isLogin ? "Sign In" : "Sign Up"}
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
             </Button>
           </form>
-          <p className="mt-4 text-center text-sm text-muted-foreground">
-            Admin access only. Public registration is disabled.
-          </p>
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              {isLogin ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
+            </button>
+          </div>
         </CardContent>
       </Card>
     </div>

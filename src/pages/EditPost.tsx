@@ -42,8 +42,7 @@ const EditPost = () => {
       return;
     }
 
-    // Check ownership or admin
-    const isOwner = data.user_id === session.user.id;
+    // Only admin can edit
     const { data: roleData } = await supabase
       .from("user_roles")
       .select("role")
@@ -51,8 +50,8 @@ const EditPost = () => {
       .eq("role", "admin")
       .maybeSingle();
 
-    if (!isOwner && !roleData) {
-      toast({ title: "Unauthorized", description: "You cannot edit this post", variant: "destructive" });
+    if (!roleData) {
+      toast({ title: "Unauthorized", description: "Only admins can edit posts.", variant: "destructive" });
       navigate("/posts");
       return;
     }

@@ -82,7 +82,7 @@ const Posts = () => {
     }
   };
 
-  const canManagePost = (post: Post) => !!user && (isAdmin || post.user_id === user.id);
+  const canManagePost = (_post: Post) => !!user && isAdmin;
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -108,10 +108,12 @@ const Posts = () => {
           <div className="flex gap-2">
             {user ? (
               <>
-                <Button onClick={() => navigate("/create-post")} className="gap-2 rounded-xl">
-                  <PlusCircle className="w-4 h-4" />
-                  New Post
-                </Button>
+                {isAdmin && (
+                  <Button onClick={() => navigate("/create-post")} className="gap-2 rounded-xl">
+                    <PlusCircle className="w-4 h-4" />
+                    New Post
+                  </Button>
+                )}
                 <Button variant="outline" onClick={handleSignOut} className="gap-2 rounded-xl">
                   <LogOut className="w-4 h-4" />
                   Sign Out

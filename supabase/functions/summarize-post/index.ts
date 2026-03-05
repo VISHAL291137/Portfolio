@@ -22,6 +22,8 @@ function getCorsHeaders(req: Request) {
 const MAX_CONTENT_LENGTH = 50000;
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {

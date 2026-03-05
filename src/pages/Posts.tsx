@@ -82,7 +82,7 @@ const Posts = () => {
     }
   };
 
-  const canManagePost = (post: Post) => !!user && (isAdmin || post.user_id === user.id);
+  const canManagePost = (_post: Post) => !!user && isAdmin;
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
